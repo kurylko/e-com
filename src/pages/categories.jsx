@@ -1,7 +1,14 @@
 export const Categories = () => {
     return (
         <div>
-            <h2>Categories here</h2>
+            <ul>
+                <li>
+                    <b>file name:</b> categories.jsx
+                </li>
+                <li>
+                    <b>component name:</b> Categories
+                </li>
+            </ul>
         </div>
     )
 }
