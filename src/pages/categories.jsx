@@ -2,6 +2,9 @@ import { CategoriesList } from "../components/categories-list";
 import { CategoryItem } from "../components/category-item";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useFetch } from "./../hooks/useFetch";
+
+
 
 const data = [
     {
@@ -32,20 +35,10 @@ const data = [
 ];
 
 export const Categories = () => {
-    const [categoriesResp, setCategoriesResp] = useState([]);
-    const [errorResp, setErrorResp] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const [categoriesResp, errorResp, isLoading] = useFetch(
+        `https://api.escuelajs.co/api/v1/categories`
+    );
 
-    useEffect(() => {
-        axios
-            .get(`https://api.escuelajs.co/api/v1/categories`)
-            .then((response) => setCategoriesResp(response))
-            .catch((error) => setErrorResp(error, "error"))
-            .finally(() => setIsLoading(false));
-
-    }, []);
-
-    console.log("isLoading: ", isLoading);
 
     if (isLoading) {
         return <h2>request is still in process, loading..</h2>;
