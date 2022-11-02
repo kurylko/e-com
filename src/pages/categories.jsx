@@ -52,8 +52,12 @@ export const Categories = () => {
 
     return (
         <div>
-            <CategoriesList data={categoriesResp.data} />
-            {/*<CategoryItem />*/}
+            <CategoriesList>
+                {categoriesResp.data.map(({ id, name, image }, index) => (
+                    <CategoryItem key={id || index} name={name} image={image} />
+                ))}
+            </CategoriesList>
         </div>
+
     )
 }; 
