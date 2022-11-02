@@ -1,5 +1,7 @@
 import { CategoriesList } from "../components/categories-list";
 import { CategoryItem } from "../components/category-item";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const data = [
     {
@@ -30,6 +32,10 @@ const data = [
 ];
 
 export const Categories = () => {
+    axios
+        .get(`https://api.escuelajs.co/api/v1/categories`)
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error, "error"));
     return (
         <div>
             <CategoriesList data={data} />
